@@ -11,7 +11,7 @@
 	<form action="" method="post" align="center">
 		{!!csrf_field()!!}
 		<p>
-			Name : {{Auth::user()->name}}
+			Name: {{Auth::user()->name}}
 		</p>
 		<p>
 			Content:<textarea name="content" id="" cols="30" rows="10"></textarea>

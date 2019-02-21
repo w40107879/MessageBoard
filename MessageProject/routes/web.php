@@ -18,12 +18,14 @@
 //[GET,POST] /msg/up/{id} 修改留言
 
 Auth::routes();
+Route::get('auth/login','HomeController@index');
+Route::group(['before'=>'auth'], function(){
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::group(['before'=>'Auth'], function(){
 Route::get('msg/index','MsgsController@index');
 Route::get('msg/add','MsgsController@add');
 Route::post('msg/add','MsgsController@addPost');
+Route::get('msg/uplode','MsgsController@uplode');
+Route::post('msg/uplode','MsgsController@uploadPicture');
 Route::get('msg/del/{id}','MsgsController@del')->where('id','\d+');
 Route::match(['get','post'],'msg/edit/{id}','MsgsController@edit')->where('id','\d+');
 Route::get('msg/replyindex/{id}','ReplysController@replyindex')->where('id','\d+');
@@ -31,4 +33,5 @@ Route::get('msg/reply/{id}','ReplysController@reply')->where('id','\d+');
 Route::post('msg/reply/{id}','ReplysController@replyPost');
 Route::get('msg/replydel/{id1}/{id2}','ReplysController@replydel')->where('id1','\d+');
 Route::match(['get','post'],'msg/replyedit/{id1}/{id2}','ReplysController@replyedit')->where('id1','\d+');
+
 });

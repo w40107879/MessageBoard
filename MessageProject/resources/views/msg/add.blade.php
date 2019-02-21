@@ -19,9 +19,13 @@
 		<p>
 			Content:<textarea name="content" id="" cols="30" rows="10"></textarea>
 		</p>
+		<div style="text-align:center;">
+			<a href="/msg/uplode">Uplode Image</a>
+		</div>
 		<input type="submit" value="Sumit">
 		<input type="button" onclick="history.back()" value="Go Back"></input>
 	</form>
+
 </body>
 </html>
 @endsection

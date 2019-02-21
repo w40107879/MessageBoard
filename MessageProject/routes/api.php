@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-
+use App\Msg;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,3 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('msg', 'InformationController@index');
+Route::get('msg/{msg}', 'InformationController@show');
+Route::delete('msg/{msg}', 'InformationController@delete');

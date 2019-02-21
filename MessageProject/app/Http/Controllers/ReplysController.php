@@ -23,11 +23,14 @@ class ReplysController extends Controller
     }
 
     public function replyPost(Request $request,$id){
+        $msg = Msg::find($id);
         $reply = new Reply();
         $user = new User();
+        $msg->NumReply++;
         $reply->msgs_id = $id;
         $reply->comment_name=Auth::user()->name;
         $reply->content=$request->input('content');
+        $msg->save();
          if($reply->save()){
           return redirect('msg/replyindex/'.$id);
        }else{
@@ -56,6 +59,9 @@ class ReplysController extends Controller
 
     public function replydel($id1,$id2){
       $reply = Reply::find($id2)->delete();
+      $msg = Msg::find($id1);
+      $msg->NumReply--;
+      $msg->save();
       return redirect('msg/replyindex/'.$id1);
     }
 }

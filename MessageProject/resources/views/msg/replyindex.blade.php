@@ -12,12 +12,12 @@
         <a href="/msg/reply/{{$id}}">Reply</a><br>
         <a href="/msg/index">Message Board</a>
       </div>
-    <table align="center">
+    <table align="center" style="width:40%">
       @if(count($reply)>0)
         <tr>
-            <td>name</td>
-            <td>content</td>
-            <td>Operate</td>
+            <td>Name</td>
+            <td>Content</td>
+            <td>Reply Time</td>
         </tr>
          <!--$msg屬於陣列 儲存所有的內容 -->
          @foreach($reply as $r)
@@ -25,6 +25,7 @@
                 <tr>
                     <td>{{$r->comment_name}}</td>
                     <td>{{$r->content}}</td>
+                    <td>{{$r->created_at}}</td>
                     <td>
                         <a href="/msg/replydel/{{$id}}/{{$r->id}}">Delete</a>
                         <a href="/msg/replyedit/{{$id}}/{{$r->id}}">Edit</a>
