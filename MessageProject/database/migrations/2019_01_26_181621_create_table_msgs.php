@@ -18,6 +18,7 @@ class CreateTableMsgs extends Migration
             $table->char('name');
             $table->string('title',30);
             $table->text('content');
+            $table->integer('NumReply');
             $table->timestamps();
         });
     }
