@@ -28,6 +28,7 @@ Route::group(['prefix' => 'user'], function(){
     });
 });
 Route::get('auth/login','HomeController@index');
+Route::get('logout','HomeController@index');
 Route::group(['before'=>'auth'], function(){
 	Route::get('msg/index','MsgsController@index');
 	Route::get('msg/add','MsgsController@add');
@@ -41,4 +42,6 @@ Route::group(['before'=>'auth'], function(){
 	Route::post('msg/reply/{id}','ReplysController@replyPost');
 	Route::get('msg/replydel/{id1}/{id2}','ReplysController@replydel')->where('id1','\d+');
 	Route::match(['get','post'],'msg/replyedit/{id1}/{id2}','ReplysController@replyedit')->where('id1','\d+');
+	Route::get('/','HomeController@index');
+	Route::get('home','HomeController@index');
 });
