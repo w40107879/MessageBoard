@@ -35,4 +35,11 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    //在設定好laravel/socialite套件後，我們要在config/services.php檔案中加入Facebook驗證資料相關設定，像下面這樣
+    'facebook' => [
+        'client_id' => env('FB_CLIENT_ID'),
+        'client_secret' => env('FB_CLIENT_SECRET'),
+        'redirect' => env('FB_REDIRECT'),
+    ],
+
 ];
