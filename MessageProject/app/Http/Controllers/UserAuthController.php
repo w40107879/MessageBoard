@@ -63,10 +63,10 @@ class UserAuthController extends Controller
         {
             //尚未註冊
             $input = [
-              'name' => $facebook_name,
-              'email' => $facebook_email, //E-mail
-              'password' => uniqid(), //隨機產生密碼
-              'facebook_id' => $facebook_id, //Facebook ID
+                'name' => $facebook_name,
+                'email' => $facebook_email, //E-mail
+                'password' => uniqid(), //隨機產生密碼
+                'facebook_id' => $facebook_id, //Facebook ID
             ];
             //密碼加密
             $input['password'] = Hash::make($input['password']);

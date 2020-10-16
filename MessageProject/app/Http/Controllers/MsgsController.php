@@ -12,9 +12,9 @@ use Auth;
 
 class MsgsController extends Controller
 {
-  public function __construct() {
-       $this->middleware('auth');
-   }
+    public function __construct() {
+        $this->middleware('auth');
+    }
 
     public function add(){
         return view('msg.add');
@@ -23,7 +23,7 @@ class MsgsController extends Controller
         return view('msg.uplode');
     }
 
-	public function addPost(Request $request){
+    public function addPost(Request $request){
         $msg = new Msg();
         $user = new User();
         $msg->name = Auth::user()->name;
@@ -32,14 +32,14 @@ class MsgsController extends Controller
         $msg->content=$request->input('content');
         if($msg->save()){
             return redirect('msg/index'
-          );
+            );
         }else{
             echo '添加失敗';
             exit();
         }
-	}
+    }
 
-	public function index(){
+    public function index(){
         $msg = Msg::get();
         $user = User::get();
         $reply = Reply::get();
@@ -49,17 +49,17 @@ class MsgsController extends Controller
         return view('msg.index')->with($data);
     }
 
-	public function del($id){
+    public function del($id){
         $res = Msg::find($id)->delete();
         if ($res) {
-           return redirect('msg/index');
+            return redirect('msg/index');
         }else{
             echo '刪除失敗';
         }
     }
 
 
-	public function edit(Request $request,$id){
+    public function edit(Request $request,$id){
         if (empty($_POST)) {
             $msg = Msg::find($id);
             return view('msg.edit',['msg'=>$msg]);
@@ -70,13 +70,13 @@ class MsgsController extends Controller
             $msg->content = $request->content;
             $res=$msg->save();
             if ($res) {
-           return redirect('msg/index');
+            return redirect('msg/index');
         }else{
             echo ' ';
-           }
+            }
         }
     }
-  public function uploadPicture(){
+    public function uploadPicture(){
     if(isset($_POST['uploadprofileimg'])){
         $image = base64_encode(file_get_contents($_FILES['profileimg']['tmp_name']));
 
@@ -95,5 +95,5 @@ class MsgsController extends Controller
 
     }
     return redirect('msg/index');
-  }
+    }
 }
